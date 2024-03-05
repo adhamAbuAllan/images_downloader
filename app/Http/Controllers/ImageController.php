@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Image;
+use Illuminate\Support\Facades\Validator;
 
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class ImageController extends Controller
         return $this->success($images);
        }
 
-       public function addImage(Request $request){
+       public function add(Request $request){
         $fields = [
             'images.*'=>'required|image|mimes:jpeg,png,jpg',
             'app_id' =>'required|exists:myapps,id'
@@ -38,7 +39,7 @@ class ImageController extends Controller
             $quitUrl  = url($path);
             $data = Image::create([
                 'url'=>$quitUrl,
-                'app_id',
+                'app_id'=>$appId,
             ]);
             $uploadeImages[] = $data;
             return $this->success($uploadeImages);

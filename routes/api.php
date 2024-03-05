@@ -19,8 +19,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 
 });
-Route::get('/images/add',[ImageController::class, 'add']);
-Route::get('/myapps/add',[MyAppController::class, 'add']);
+Route::post('/images/add',[ImageController::class, 'add']);
+Route::post('/myapps/add',[MyAppController::class, 'add']);
 Route::get('/myapps/all',[MyAppController::class, 'all']);
 
 // Route::get('/images/all',[ImageController::class, 'all']);

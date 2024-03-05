@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('images',function(Blueprint $table){
             $table->id();
+            $table->integer('app_id');
             $table->string('url',100);
             $table->integer('download_counter',)->default(0);
             $table->timestamps();
