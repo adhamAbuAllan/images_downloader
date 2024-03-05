@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\MyAppController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,4 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 });
 Route::get('/images/add',[ImageController::class, 'add']);
-Route::get('/images/all',[ImageController::class, 'all']);
+Route::get('/myapps/add',[MyAppController::class, 'add']);
+Route::get('/myapps/all',[MyAppController::class, 'all']);
+
+// Route::get('/images/all',[ImageController::class, 'all']);

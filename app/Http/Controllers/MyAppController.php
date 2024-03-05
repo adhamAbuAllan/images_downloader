@@ -20,5 +20,19 @@ class MyAppController extends Controller
             'app_name'=>$appName,
         ]);
     }
+    // public function all (Request $request){
+    //     $myApps = MyApp::all();
+    //     $myAppsResource = MyAppResource::collectoin($myApps);
+    //     return $this->succss($myAppsResource);
+    // }
+    public function all (Request $request){
+        $myApps = MyApp::with(['images' => function ($query) {
+            $query->orderBy('download_counter', 'desc');
+        }])->get();
+    
+        $myAppsResource = MyAppResource::collection($myApps);
+        return $this->success($myAppsResource);
+    }
+    
     
 }
