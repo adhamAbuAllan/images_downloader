@@ -23,7 +23,7 @@ class MyAppController extends Controller
             'app_name'=>$appName,
         ]);
     }
-  
+    
     public function all (Request $request){
        
         $myApps = MyApp::with(['images' => function ($query) {

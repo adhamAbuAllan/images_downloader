@@ -45,5 +45,16 @@ class ImageController extends Controller
             return $this->success($uploadeImages);
         }
        }
+       public function imageCounter(Request $request)
+       {
+           $imagesCounter = Image::max('image_counter'); // Get the maximum value of image_counter
+           $newCounterValue = $imagesCounter + 1; // Increment the value by 1
+       
+           $data = Image::create([
+               'image_counter' => $newCounterValue,
+           ]);
+       
+           return $this->success($data);
+       }
     }
 
