@@ -21,7 +21,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::post('/images/add',[ImageController::class, 'add']);
 Route::post('/myapps/add',[MyAppController::class, 'add']);
-Route::post('/image/imageCounter',[ImageController::class,'imageCounter']);
+// Route::post('/image/imageCounter',[ImageController::class,'imageCounter']);
+// Route::get('/images/download/{id}', 'ImageController@download');
+
+Route::middleware('api')->group(function () {
+    Route::get('/images/download/{id}', [ImageController::class, 'download']);
+});
+
 Route::get('/myapps/all',[MyAppController::class, 'all']);
 
 // Route::get('/images/all',[ImageController::class, 'all']);
